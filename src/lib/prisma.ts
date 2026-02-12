@@ -1,5 +1,6 @@
 import debug from 'debug';
 import { PrismaClient } from '@/generated/prisma/client';
+import { PrismaPg } from '@prisma/adapter-pg';
 import { readReplicas } from '@prisma/extension-read-replicas';
 import { formatInTimeZone } from 'date-fns-tz';
 import { MYSQL, POSTGRESQL, getDatabaseType } from '@/lib/db';
@@ -346,6 +347,10 @@ function getClient(params?: {
   replicaUrl?: string;
   options?: any;
 }): PrismaClient {
+  if (!process.env.DATABASE_URL) {
+    return null;
+  }
+
   const {
     logQuery = !!process.env.LOG_QUERY,
     queryLogger,
@@ -353,16 +358,35 @@ function getClient(params?: {
     options,
   } = params || {};
 
+  const url = new URL(process.env.DATABASE_URL);
+  const schema = url.searchParams.get('schema') ?? undefined;
+
+  const adapter = new PrismaPg(
+    { connectionString: process.env.DATABASE_URL },
+    { schema },
+  );
+
   const prisma = new PrismaClient({
+    adapter,
     errorFormat: 'pretty',
     ...(logQuery && PRISMA_LOG_OPTIONS),
     ...options,
   });
 
   if (replicaUrl) {
+    const replicaAdapter = new PrismaPg(
+      { connectionString: replicaUrl },
+      { schema },
+    );
+
+    const replicaClient = new PrismaClient({
+      adapter: replicaAdapter,
+      ...(logQuery && PRISMA_LOG_OPTIONS),
+    });
+
     prisma.$extends(
       readReplicas({
-        url: replicaUrl,
+        replicas: [replicaClient],
       }),
     );
   }
