@@ -346,7 +346,7 @@ function getClient(params?: {
   queryLogger?: () => void;
   replicaUrl?: string;
   options?: any;
-}): PrismaClient {
+}): PrismaClient | null {
   if (!process.env.DATABASE_URL) {
     return null;
   }
