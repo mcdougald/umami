@@ -2,7 +2,7 @@ export function hex6(str: string) {
   let h = 0x811c9dc5; // FNV-1a 32-bit offset
   for (let i = 0; i < str.length; i++) {
     h ^= str.charCodeAt(i);
-    h = (h >>> 0) * 0x01000193; // FNV prime
+    h = Math.imul(h, 0x01000193); // FNV prime with proper 32-bit multiplication
   }
   // use lower 24 bits; pad to 6 hex chars
   return ((h >>> 0) & 0xffffff).toString(16).padStart(6, '0');
