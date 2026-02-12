@@ -4,7 +4,7 @@ import Report from '../[reportId]/Report';
 import ReportHeader from '../[reportId]/ReportHeader';
 import ReportMenu from '../[reportId]/ReportMenu';
 import ReportBody from '../[reportId]/ReportBody';
-import Funnel from '@/assets/funnel.svg';
+import Funnel from '@/components/svg/Funnel';
 import { REPORT_TYPES } from '@/lib/constants';
 
 const defaultParameters = {

@@ -5,7 +5,7 @@ import ReportMenu from '../[reportId]/ReportMenu';
 import ReportBody from '../[reportId]/ReportBody';
 import JourneyParameters from './JourneyParameters';
 import JourneyView from './JourneyView';
-import Path from '@/assets/path.svg';
+import Path from '@/components/svg/Path';
 import { REPORT_TYPES } from '@/lib/constants';
 
 const defaultParameters = {

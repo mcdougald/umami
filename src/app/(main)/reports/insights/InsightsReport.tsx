@@ -4,7 +4,7 @@ import ReportMenu from '../[reportId]/ReportMenu';
 import ReportBody from '../[reportId]/ReportBody';
 import InsightsParameters from './InsightsParameters';
 import InsightsTable from './InsightsTable';
-import Lightbulb from '@/assets/lightbulb.svg';
+import Lightbulb from '@/components/svg/Lightbulb';
 import { REPORT_TYPES } from '@/lib/constants';
 
 const defaultParameters = {

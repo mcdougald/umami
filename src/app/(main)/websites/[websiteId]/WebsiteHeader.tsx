@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
 import { Button, Icon, Text } from 'react-basics';
-import Lightning from '@/assets/lightning.svg';
+import Lightning from '@/components/svg/Lightning';
 import styles from './WebsiteHeader.module.css';
 
 export function WebsiteHeader({

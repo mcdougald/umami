@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import { Button, Icon } from 'react-basics';
 import { useTheme } from '@/components/hooks';
-import Sun from '@/assets/sun.svg';
-import Moon from '@/assets/moon.svg';
+import Sun from '@/components/svg/Sun';
+import Moon from '@/components/svg/Moon';
 import styles from './ThemeSetting.module.css';
 
 export function ThemeSetting() {

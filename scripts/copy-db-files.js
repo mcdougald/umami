@@ -1,8 +1,12 @@
 /* eslint-disable no-console */
-require('dotenv').config();
-const fse = require('fs-extra');
-const path = require('path');
-const del = require('del');
+import 'dotenv/config';
+import fse from 'fs-extra';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import del from 'del';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 function getDatabaseType(url = process.env.DATABASE_URL) {
   const type = process.env.DATABASE_TYPE || (url && url.split(':')[0]);
@@ -17,7 +21,7 @@ function getDatabaseType(url = process.env.DATABASE_URL) {
 const databaseType = getDatabaseType();
 
 if (!databaseType || !['mysql', 'postgresql'].includes(databaseType)) {
-  throw new Error('Missing or invalid database');
+  throw new Error(`Missing or invalid database type: ${databaseType}`);
 }
 
 console.log(`Database type detected: ${databaseType}`);
