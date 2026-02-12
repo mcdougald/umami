@@ -5,7 +5,7 @@ import ReportMenu from '../[reportId]/ReportMenu';
 import ReportBody from '../[reportId]/ReportBody';
 import UTMParameters from './UTMParameters';
 import UTMView from './UTMView';
-import Tag from '@/assets/tag.svg';
+import Tag from '@/components/svg/Tag';
 import { REPORT_TYPES } from '@/lib/constants';
 
 const defaultParameters = {

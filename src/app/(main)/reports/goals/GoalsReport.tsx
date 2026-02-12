@@ -4,7 +4,7 @@ import Report from '../[reportId]/Report';
 import ReportHeader from '../[reportId]/ReportHeader';
 import ReportMenu from '../[reportId]/ReportMenu';
 import ReportBody from '../[reportId]/ReportBody';
-import Target from '@/assets/target.svg';
+import Target from '@/components/svg/Target';
 import { REPORT_TYPES } from '@/lib/constants';
 
 const defaultParameters = {

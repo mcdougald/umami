@@ -1,4 +1,4 @@
-import Money from '@/assets/money.svg';
+import Money from '@/components/svg/Money';
 import { REPORT_TYPES } from '@/lib/constants';
 import Report from '../[reportId]/Report';
 import ReportBody from '../[reportId]/ReportBody';
